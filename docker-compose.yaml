@@ -8,6 +8,8 @@ services:
     image: "mkumor/multi-server"
     mem_limit: 128m
     hostname: api
+    expose:
+      - "5000"
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
