@@ -13,15 +13,15 @@ jobs:
       - run: docker build -t mkumor/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true mkumor/react-test npm test
 
-      - run: docker build -t mkumor/multi-client:v2 ./client
-      - run: docker build -t mkumor/multi-nginx:v2 ./nginx
-      - run: docker build -t mkumor/multi-server:v2 ./server
-      - run: docker build -t mkumor/multi-worker:v2 ./worker
+      - run: docker build -t mkumor/multi-client ./client
+      - run: docker build -t mkumor/multi-nginx ./nginx
+      - run: docker build -t mkumor/multi-server ./server
+      - run: docker build -t mkumor/multi-worker ./worker
 
-      - run: docker push mkumor/multi-client:v2
-      - run: docker push mkumor/multi-nginx:v2
-      - run: docker push mkumor/multi-server:v2
-      - run: docker push mkumor/multi-worker:v2
+      - run: docker push mkumor/multi-client
+      - run: docker push mkumor/multi-nginx
+      - run: docker push mkumor/multi-server
+      - run: docker push mkumor/multi-worker
 
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'

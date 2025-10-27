@@ -1,13 +1,12 @@
 version: "3"
 services:
   client:
-    image: "mkumor/multi-client:v2"
+    image: "mkumor/multi-client"
     mem_limit: 128m
     hostname: client
   api:
-    image: "mkumor/multi-server:v2"
+    image: "mkumor/multi-server"
     mem_limit: 128m
-    hostname: api
     expose:
       - "5000"
     environment:
@@ -19,14 +18,14 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: "mkumor/multi-worker:v2"
+    image: "mkumor/multi-worker"
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "mkumor/multi-nginx:v2"
+    image: "mkumor/multi-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
